@@ -39,6 +39,22 @@
         };
     };
 
+    macros {
+        switch_to_mac: switch_to_mac {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&bt BT_SEL 2 &to 0>;
+            label = "SWITCH_TO_MAC";
+        };
+
+        switch_to_win: switch_to_windows {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&bt BT_SEL 1 &to 1>;
+            label = "SWITCH_TO_WINDOWS";
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -96,7 +112,7 @@
 &trans      &trans        &kp N7        &kp N8        &kp N9        &trans                          &trans      &kp LEFT_BRACE        &kp RIGHT_BRACE        &trans  &trans         &kp PIPE
 &trans      &trans        &kp N4        &kp N5        &kp N6        &trans                          &trans      &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &trans  &trans         &kp GRAVE
 &trans      &trans        &kp N1        &kp N2        &kp N3        &trans        &trans    &trans  &trans      &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &trans  &kp BACKSLASH  &trans
-                                        &trans        &kp N0        &trans        &trans    &trans  &trans      &tog 1                &tog 2
+                                        &trans        &kp N0        &trans        &trans    &trans  &to 0       &to 1                 &to 2
             >;
         };
 
