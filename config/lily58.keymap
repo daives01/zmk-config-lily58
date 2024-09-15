@@ -43,27 +43,38 @@
         to_mac: switch_to_mac {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&bt BT_SEL 2 &to 0>;
+            bindings = <&bt BT_SEL 2 &to 1>;
             label = "SWITCH_TO_MAC";
         };
 
         to_win: switch_to_windows {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&bt BT_SEL 0 &to 1>;
+            bindings = <&bt BT_SEL 0 &to 0>;
             label = "SWITCH_TO_WINDOWS";
         };
 
         to_laptop: to_laptop {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&bt BT_SEL 1 &to 1>;
+            bindings = <&bt BT_SEL 1 &to 0>;
             label = "TO_LAPTOP";
         };
     };
 
     keymap {
         compatible = "zmk,keymap";
+
+        windows {
+            display-name = "Base";
+            bindings = <
+&kp ESCAPE   &kp N1  &kp N2       &kp N3            &kp N4        &kp N5                         &kp N6  &kp N7        &kp N8       &kp N9       &kp N0         &kp EQUAL
+&kp TAB      &kp Q   &kp W        &kp E             &kp R         &kp T                          &kp Y   &kp U         &kp I        &kp O        &kp P          &kp MINUS
+&key_repeat  &kp A   &hml LALT S  &hml LGUI D       &hml LCTRL F  &kp G                          &kp H   &hmr RCTRL J  &hmr RGUI K  &hmr RALT L  &kp SEMICOLON  &kp SINGLE_QUOTE
+&kp LSHIFT   &kp Z   &kp X        &kp C             &kp V         &kp B   &kp LBKT     &kp RBKT  &kp N   &kp M         &kp COMMA    &kp DOT      &kp FSLH       &kp RSHIFT
+                                  &kp LEFT_CONTROL  &kp DELETE    &mo 4   &kp SPACE    &kp RET   &mo 5   &kp BSPC      &kp RGUI
+            >;
+        };
 
         macos_base {
             // ------------------------------------------------------------------------------------------------------------
@@ -80,17 +91,6 @@
 &key_repeat  &kp A   &hml LCTRL S  &hml LEFT_ALT D  &hml LEFT_GUI F  &kp G                          &kp H   &hmr RGUI J  &hmr RIGHT_ALT K  &hmr RCTRL L  &kp SEMICOLON  &kp SINGLE_QUOTE
 &kp LSHIFT   &kp Z   &kp X         &kp C            &kp V            &kp B   &kp LBKT     &kp RBKT  &kp N   &kp M        &kp COMMA         &kp DOT       &kp FSLH       &kp RSHIFT
                                    &kp LEFT_GUI     &kp DELETE       &mo 4   &kp SPACE    &kp RET   &mo 5   &kp BSPC     &kp RGUI
-            >;
-        };
-
-        windows {
-            display-name = "Base";
-            bindings = <
-&kp ESCAPE   &kp N1  &kp N2       &kp N3            &kp N4        &kp N5                         &kp N6  &kp N7        &kp N8       &kp N9       &kp N0         &kp EQUAL
-&kp TAB      &kp Q   &kp W        &kp E             &kp R         &kp T                          &kp Y   &kp U         &kp I        &kp O        &kp P          &kp MINUS
-&key_repeat  &kp A   &hml LALT S  &hml LGUI D       &hml LCTRL F  &kp G                          &kp H   &hmr RCTRL J  &hmr RGUI K  &hmr RALT L  &kp SEMICOLON  &kp SINGLE_QUOTE
-&kp LSHIFT   &kp Z   &kp X        &kp C             &kp V         &kp B   &kp LBKT     &kp RBKT  &kp N   &kp M         &kp COMMA    &kp DOT      &kp FSLH       &kp RSHIFT
-                                  &kp LEFT_CONTROL  &kp DELETE    &mo 4   &kp SPACE    &kp RET   &mo 5   &kp BSPC      &kp RGUI
             >;
         };
 
@@ -156,7 +156,7 @@
 &trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &to 3   &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &to 0   &to 1   &to 2   &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &to 1   &to 0   &to 2   &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
                         &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans
             >;
         };
